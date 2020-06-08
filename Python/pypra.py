@@ -52,8 +52,8 @@ def ur(s, n):
         else:
             new.append(s[i])
             i += 1
-    for k in range(len(new)):
-        if
+    # for k in range(len(new)):
+    #     if
 
     # return print(new)
 
