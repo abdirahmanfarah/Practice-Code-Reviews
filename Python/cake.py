@@ -25,14 +25,4 @@ def merge_ranges(meetings):
     return merged_meetings
 
 
-print(merge_ranges([(1, 3), (2, 4)]))
-
-
-# Tests
-
-# class Test(unittest.TestCase):
-
-#     def test_meetings_overlap(self):
-#         actual = merge_ranges([(1, 3), (2, 4)])
-#         expected = [(1, 4)]
-#         self.assertEqual(actual, expected)
+print(merge_ranges([(0, 1), (3, 5), (4, 8), (10, 12), (9, 10)]))
