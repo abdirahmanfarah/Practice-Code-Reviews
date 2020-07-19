@@ -30,23 +30,35 @@
 # return new_string
 
 
-def compress(s):
-    counter = 0
-    new_string = ''
+# def compress(s):
+#     counter = 0
+#     new_string = ''
 
-    if s is None or len(s) == 0:
-        print("No string")
+#     if s is None or len(s) == 0:
+#         print("No string")
 
-    for i in range(len(s)):
-        counter += 1
-        if i == len(s) - 1 or s[i] != s[i+1]:
-            new_string = new_string + s[i] + str(counter)
-            counter = 0
+#     for i in range(len(s)):
+#         counter += 1
+#         if i == len(s) - 1 or s[i] != s[i+1]:
+#             new_string = new_string + s[i] + str(counter)
+#             counter = 0
 
-    if len(new_string) <= len(s):
-        print(s)
-    else:
-        print(new_string)
+#     if len(new_string) <= len(s):
+#         print(s)
+#     else:
+#         print(new_string)
 
 
-compress('abfaaadaddd')
+# compress('abfaaadaddd')
+
+
+def reverse(s):
+    x = list(s)
+    # print(x)
+    x.reverse()
+
+    return "".join(x)
+
+
+y = 'Reverse this right now, Python or I will end you!'
+print(reverse(y))

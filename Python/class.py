@@ -40,29 +40,41 @@ class Ticket:
         self.destination = destination
 
 
-def reconstruct_trip(tickets, length):
-    """
-    YOUR CODE HERE
-    """
-    route = []
-    hash = {}
+# def reconstruct_trip(tickets, length):
+#     """
+#     YOUR CODE HERE
+#     """
+#     route = []
+#     hash = {}
 
-    for i in range(len(tickets)):
-        hash[tickets[i].source] = tickets[i].destination
-        # print(hash)
+#     for i in range(len(tickets)):
+#         hash[tickets[i].source] = tickets[i].destination
+#         # print(hash)
 
-    for k, v in hash.items():
-        if k == "NONE":
-            route.append(v)
+    # for k, v in hash.items():
+    #     if k == "NONE":
+    #         route.append(v)
 
-    all_routes = False
+    # all_routes = False
 
-    while not all_routes:
-        # find out the next route which is LAX
-        last_route = route[-1]
+    # while not all_routes:
+    #     # find out the next route which is LAX
+    #     last_route = route[-1]
 
-        route.append(hash[last_route])
-        if last_route == "NONE":
-            all_routes = True
+    #     route.append(hash[last_route])
+    #     if last_route == "NONE":
+    #         all_routes = True
 
-    return route[:length]
+    # return route[:length]
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # hash
+        hash = {}
+        # loop through array
+        for i in range(len(nums)):
+            result = target - nums[i]
+            if result in hash:
+                return [hash[result], i]
+            else:
+                hash[nums[i]] = i
