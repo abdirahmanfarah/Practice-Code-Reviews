@@ -27,27 +27,68 @@
 
 # print(merge_ranges([(0, 1), (3, 5), (4, 8), (10, 12), (9, 10)]))
 
-def sort_scores(unsorted_scores, highest_possible_score):
-    # List of 0s at indices 0..highest_possible_score
-    score_counts = [0] * (highest_possible_score+1)
+# def sort_scores(unsorted_scores, highest_possible_score):
+#     # List of 0s at indices 0..highest_possible_score
+#     score_counts = [0] * (highest_possible_score+1)
 
-    # Populate score_counts
-    for score in unsorted_scores:
-        score_counts[score] += 1
+#     # Populate score_counts
+#     for score in unsorted_scores:
+#         score_counts[score] += 1
 
-    # Populate the final sorted list
-    sorted_scores = []
+#     # Populate the final sorted list
+#     sorted_scores = []
 
-    # For each item in score_counts
-    for score in range(len(score_counts) - 1, -1, -1):
-        count = score_counts[score]
+#     # For each item in score_counts
+#     for score in range(len(score_counts) - 1, -1, -1):
+#         count = score_counts[score]
 
-        # For the number of times the item occurs
-        for time in range(count):
-            # Add it to the sorted list
-            sorted_scores.append(score)
+#         # For the number of times the item occurs
+#         for time in range(count):
+#             # Add it to the sorted list
+#             sorted_scores.append(score)
 
-    return sorted_scores
+#     return sorted_scores
 
 
-print(sort_scores([37, 89, 41, 65, 91, 53], 100))
+# print(sort_scores([37, 89, 41, 65, 91, 53], 100))
+
+
+def find_rotation_point(words):
+
+    # Find the rotation point in the list
+
+    array_begin = -1
+    array_end = len(words)
+
+    while array_begin + 1 < array_end:
+        distance = array_end - array_begin
+        middle = distance // 2
+
+        guess_index = array_begin + middle
+        right_word = guess_index + 1
+        left_word = guess_index - 1
+        # last_word = words[-1]
+
+        # print(last_word)
+        # if words[guess_index] == last_word:
+        #     return guess_index
+
+        if words[guess_index] < words[right_word] and words[guess_index] < words[left_word]:
+            return right_word
+
+        if words[guess_index] > words[array_begin]:
+            array_end = guess_index
+        else:
+            array_begin = guess_index
+
+        # print(words[guess_index])
+
+
+# print(find_rotation_point(['grape', 'orange', 'plum',
+#                            'radish', 'apple']))
+
+# print(find_rotation_point(['cape', 'cake']))
+print(find_rotation_point(['ptolemaic', 'retrograde', 'supplant',
+                           'undulate', 'xenoepist', 'asymptote',
+                           'babka', 'banoffee', 'engender',
+                           'karpatka', 'othellolagkage']))
