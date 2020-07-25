@@ -92,3 +92,38 @@ print(find_rotation_point(['ptolemaic', 'retrograde', 'supplant',
                            'undulate', 'xenoepist', 'asymptote',
                            'babka', 'banoffee', 'engender',
                            'karpatka', 'othellolagkage']))
+
+
+
+import unittest
+
+
+def is_balanced(tree_root):
+
+    # Determine if the tree is superbalanced
+    visited_nodes = set()
+    stack = []
+    depth_counter = 0
+    
+    
+    if tree_root.value is None:
+        return False
+    if tree_root.right is None and tree_root.left != None:
+        return False
+    if tree_root.left is None and tree_root.right != None:
+        return False
+        
+    stack.append(tree_root.value)
+    visited_nodes.add(tree_root.value)
+    
+    print(visited_nodes)
+    while stack != None:
+      
+        # if tree_root.left not in visited_nodes:
+        #     visited
+        if tree_root.left != None:
+            stack.append(tree_root.left.value)
+            print(stack)
+            
+            
+    # return True
