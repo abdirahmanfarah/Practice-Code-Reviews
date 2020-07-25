@@ -53,77 +53,104 @@
 # print(sort_scores([37, 89, 41, 65, 91, 53], 100))
 
 
-def find_rotation_point(words):
+import unittest
 
-    # Find the rotation point in the list
 
-    array_begin = -1
-    array_end = len(words)
+# def find_rotation_point(words):
 
-    while array_begin + 1 < array_end:
-        distance = array_end - array_begin
-        middle = distance // 2
+#     # Find the rotation point in the list
 
-        guess_index = array_begin + middle
-        right_word = guess_index + 1
-        left_word = guess_index - 1
-        # last_word = words[-1]
+#     array_begin = -1
+#     array_end = len(words)
 
-        # print(last_word)
-        # if words[guess_index] == last_word:
-        #     return guess_index
+#     while array_begin + 1 < array_end:
+#         distance = array_end - array_begin
+#         middle = distance // 2
 
-        if words[guess_index] < words[right_word] and words[guess_index] < words[left_word]:
-            return right_word
+#         guess_index = array_begin + middle
+#         right_word = guess_index + 1
+#         left_word = guess_index - 1
+#         # last_word = words[-1]
 
-        if words[guess_index] > words[array_begin]:
-            array_end = guess_index
-        else:
-            array_begin = guess_index
+#         # print(last_word)
+#         # if words[guess_index] == last_word:
+#         #     return guess_index
 
-        # print(words[guess_index])
+#         if words[guess_index] < words[right_word] and words[guess_index] < words[left_word]:
+#             return right_word
+
+#         if words[guess_index] > words[array_begin]:
+#             array_end = guess_index
+#         else:
+#             array_begin = guess_index
+
+# print(words[guess_index])
 
 
 # print(find_rotation_point(['grape', 'orange', 'plum',
 #                            'radish', 'apple']))
 
 # print(find_rotation_point(['cape', 'cake']))
-print(find_rotation_point(['ptolemaic', 'retrograde', 'supplant',
-                           'undulate', 'xenoepist', 'asymptote',
-                           'babka', 'banoffee', 'engender',
-                           'karpatka', 'othellolagkage']))
-
-
-
-import unittest
+# print(find_rotation_point(['ptolemaic', 'retrograde', 'supplant',
+#                            'undulate', 'xenoepist', 'asymptote',
+#                            'babka', 'banoffee', 'engender',
+#                            'karpatka', 'othellolagkage']))
 
 
 def is_balanced(tree_root):
 
     # Determine if the tree is superbalanced
-    visited_nodes = set()
-    stack = []
-    depth_counter = 0
-    
-    
-    if tree_root.value is None:
-        return False
-    if tree_root.right is None and tree_root.left != None:
-        return False
-    if tree_root.left is None and tree_root.right != None:
-        return False
-        
-    stack.append(tree_root.value)
-    visited_nodes.add(tree_root.value)
-    
-    print(visited_nodes)
-    while stack != None:
-      
-        # if tree_root.left not in visited_nodes:
-        #     visited
-        if tree_root.left != None:
-            stack.append(tree_root.left.value)
-            print(stack)
-            
-            
-    # return True
+    nodes = []
+    depth_counter = []
+
+    if tree_root is None:
+        return True
+
+    nodes.append((tree_root, 0))
+
+    while len(nodes):
+        node, depth = nodes.pop()
+
+        if not node.left and not node.right:
+            if depth not in depth_counter:
+                depth_counter.append(depth)
+
+                if (len(depth_counter) > 2 or (len(depth_counter) == 2 and
+                                               abs(depth_counter[0] - depth_counter[1]) > 1)):
+                    return False
+        else:
+            if node.left:
+                nodes.append((node.left, depth + 1))
+            if node.right:
+                nodes.append((node.right, depth + 1))
+
+    return True
+
+
+class Test(unittest.TestCase):
+
+    class BinaryTreeNode(object):
+
+        def __init__(self, value):
+            self.value = value
+            self.left = None
+            self.right = None
+
+        def insert_left(self, value):
+            self.left = Test.BinaryTreeNode(value)
+            return self.left
+
+        def insert_right(self, value):
+            self.right = Test.BinaryTreeNode(value)
+            return self.right
+
+    def test_full_tree(self):
+        tree = Test.BinaryTreeNode(5)
+        left = tree.insert_left(8)
+        right = tree.insert_right(6)
+        left.insert_left(1)
+        left.insert_right(2)
+        right.insert_left(3)
+        right.insert_right(4)
+        result = is_balanced(tree)
+        self.assertTrue(result)
