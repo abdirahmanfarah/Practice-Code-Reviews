@@ -63,3 +63,18 @@ def get_permutations(string):
 
 
 print(get_permutations('abc'))
+
+ def fib(self, N: int) -> int:
+      cache = {}
+
+       if N == 0 or N == 1:
+            return N
+
+        if N in cache:
+            return cache[N]
+
+        result = self.fib(N-1) + self.fib(N-2)
+
+        cache[N] = result
+
+        return result
