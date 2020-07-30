@@ -78,3 +78,6 @@ print(get_permutations('abc'))
         cache[N] = result
 
         return result
+
+
+        # return this result 
