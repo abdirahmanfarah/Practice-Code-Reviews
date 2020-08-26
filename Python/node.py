@@ -1,44 +1,28 @@
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+
+def shuffle(nums, n):
+    # Split the array in half
+    length = len(nums)
+    middle_index = length//2
+    # array 1 will have first half of int
+    first_half = nums[:middle_index]
+    # array 2 will have second half of int
+    second_half = nums[middle_index:]
+    # print(second_half)
+    # final array
+    final = []
+
+    for i in first_half:
+        final.append(i)
+        final.append(0)
+
+    for j in range(len(second_half)):
+        for i in range(len(final)):
+            if final[i] == 0:
+                final[i] = second_half[j]
+                j += 1
+    print(final)
+    return final
 
 
-class Solution:
-    def minDiffInBST(self, root: TreeNode):
-        node = root
-        # print(node.val)
-        min_diff = 0
-        queue = []
-        visited = set()
-
-        queue.append(node.val)
-        visited.add(node.val)
-
-        while queue != None:
-            p = queue.pop()
-            print('this is p', p)
-
-            if p not in visited:
-                visited.add(p)
-
-                diff = node.val - p
-                # print(node.val)
-
-                if diff <= -1:
-                    diff * -1
-
-                if diff <= min_diff:
-                    min_diff = diff
-
-                node = p.val
-
-            if node.right:
-                queue.append(node.right.val)
-
-            if node.left:
-                queue.append(node.left.val)
-
-        return min_diff
+shuffle([2, 5, 1, 3, 8, 7],
+        3)
