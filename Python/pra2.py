@@ -152,13 +152,7 @@ def tvMessage(str, r, c):
     trans_arr = [[final_array.append(mat[t][j])
                   for t in range(len(mat))] for j in range(len(mat[0]))]
 
-    # for
-    #     final_array.append(i)
 
-    # for t in range(len(mat)):
-    #     for j in range(len(mat)):
-    #         trans_arr[t][j] = mat[j][t]
-    #         final_array.append(trans_arr[t][j])
 
     print("".join(final_array))
 
