@@ -141,18 +141,14 @@ def tvMessage(str, r, c):
     for i in range(1, len(str)):
         if i % c:
             column_arr.append(str[i])
-            # print(column_arr)
         else:
             mat.append(column_arr)
             column_arr = list()
             column_arr.append(str[i])
 
     mat.append(column_arr)
-    # trans_arr = [[0]*r for i in range(c)]
     trans_arr = [[final_array.append(mat[t][j])
                   for t in range(len(mat))] for j in range(len(mat[0]))]
-
-
 
     print("".join(final_array))
 

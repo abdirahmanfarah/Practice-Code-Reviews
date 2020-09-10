@@ -44,6 +44,7 @@ def fun_challenge(mat):
     allowed_nums = {}
     row_length = len(mat[0]) + 1
     reset_array = []
+    t = []
     for i in range(1, row_length):
         t.append(i)
 
@@ -82,18 +83,18 @@ def fun_challenge(mat):
 # DO NOT MODIFY BELOW THIS LINE
 
 
-def main():
-    matrix = []
+# def main():
+#     matrix = []
 
-    for line in sys.stdin:
-        if len(line.strip()) == 0:
-            continue
-        matrix.append([int(x) for x in line.rstrip().split(" ")])
+#     for line in sys.stdin:
+#         if len(line.strip()) == 0:
+#             continue
+#         matrix.append([int(x) for x in line.rstrip().split(" ")])
 
-    print(check_sub_sudoku(matrix))
+#     print(check_sub_sudoku(matrix))
 
 
-main()
+# main()
 
 
 # print(check_sub_sudoku([[1, 2, 3, 4],
@@ -101,6 +102,79 @@ main()
 #                         [3, 4, 1, 2],
 #                         [4, 1, 2, 3]]))
 
-print(check_sub_sudoku([[1, 2, 3],
-                        [1, 2, 3],
-                        [1, 2, 3]]))
+print(fun_challenge([[1, 2, 3],
+                     [1, 2, 3],
+                     [1, 2, 3]]))
+
+# __________________________________
+
+# You are running a classroom and suspect that some of your students are passing around the answers to multiple choice questions disguised as random strings.
+
+# Your task is to write a function that, given a list of words and a string, finds and returns the word in the list that is scrambled up inside the string, if any exists. There will be at most one matching word. The letters don't need to be contiguous.
+
+# Example:
+# words = ['cat', 'dog', 'bird', 'car', 'ax', 'baby']
+# string1 = 'tcabnihjs'
+# find_embedded_word(words, string1) -> cat
+
+# string2 = 'tbcanihjs'
+# find_embedded_word(words, string2) -> cat
+
+# string3 = 'baykkjl'
+# find_embedded_word(words, string3) -> None
+
+# string4 = 'bbabylkkj'
+# find_embedded_word(words, string4) -> baby
+
+# n = number of words in `words`
+# m = maximal string length of each word
+
+#{b:3, a: 1, y:1, l:1, k:2, j:1}
+
+
+def find_embedded_word(words, string):
+    # dict to keep count of letters
+    # an array to recycle the specific indexes
+    # loop through my string and input the count of each letter into mapict
+    # loop through words array
+    # input index into the recycle array
+    # loop through dictionary
+    # check if letter is in dict
+    # if it is, input a zero into the place of the recycled array
+    # if recycled array has all zeroes
+    # Return that original index
+
+    dictionary = {}
+
+    re_use_array = []
+
+    for letter in string:
+        if letter in dictionary:
+            dictionary[letter] += 1
+        else:
+            dictionary[letter] = 1
+
+    for i in range(len(words)):
+        re_use_array.append(words[i])
+        for j in range(len(re_use_array)):
+            letters = list(re_use_array[j])
+
+            for y in letters:
+                if y in dictionary:
+                    y == 0
+                print(letters)
+
+        for r in letters:
+            if r != 0:
+                return None
+            else:
+                return words[i]
+
+
+words = ["cat", "dog", "bird", "car", "ax", "baby"]
+string1 = "tcabnihjs"
+string2 = "tbcanihjs"
+string3 = "baykkjl"
+string4 = "bbabylkkj"
+
+find_embedded_word(words, string1)
