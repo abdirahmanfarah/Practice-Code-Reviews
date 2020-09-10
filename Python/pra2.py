@@ -85,7 +85,7 @@ O n e   d o
 e s   n o t
   s i m p l
 y   w a l k
-  i n t o  
+  i n t o
 M o r d o r
 
 -> "Oe y Mnss ioe iwnr nmatddoploootlk r"
@@ -109,15 +109,15 @@ n: the length of the message
 
 """
 
-message1 = "One does not simply walk into Mordor"
-r1 = 6
-c1 = 6
+# message1 = "One does not simply walk into Mordor"
+# r1 = 6
+# c1 = 6
 
-message2 = "1.21 gigawatts!"
-r2 = 5
-c2 = 3
-r3 = 3
-c3 = 5
+# message2 = "1.21 gigawatts!"
+# r2 = 5
+# c2 = 3
+# r3 = 3
+# c3 = 5
 
 
 def tvMessage(str, r, c):
@@ -137,18 +137,31 @@ def tvMessage(str, r, c):
     mat = []
     column_arr = []
 
-    for i in range(len(str)):
+    column_arr.append(str[0])
+    for i in range(1, len(str)):
         if i % c:
             column_arr.append(str[i])
-            print(column_arr)
+            # print(column_arr)
         else:
-            column_arr = list()
-
-        if len(column_arr) == c:
             mat.append(column_arr)
+            column_arr = list()
+            column_arr.append(str[i])
 
-    print(mat)
+    mat.append(column_arr)
+    # trans_arr = [[0]*r for i in range(c)]
+    trans_arr = [[final_array.append(mat[t][j])
+                  for t in range(len(mat))] for j in range(len(mat[0]))]
+
+    # for
+    #     final_array.append(i)
+
+    # for t in range(len(mat)):
+    #     for j in range(len(mat)):
+    #         trans_arr[t][j] = mat[j][t]
+    #         final_array.append(trans_arr[t][j])
+
+    print("".join(final_array))
 
 
-tvMessage("One does not simply walk into Mordor",
-          6, 6)
+tvMessage("1.21 gigawatts!",
+          5, 3)
